@@ -2519,8 +2519,9 @@
     "@types/semver": "7.8.0",
     "@types/web-push": "3.6.4",
     "@types/ws": "8.18.2",
-    "@vitest/browser-playwright": "5.0.5",
-    "@vitest/coverage-v8": "5.0.5",
+    "@useblacksmith/vitest": "0.6.1",
+    "@vitest/browser-playwright": "5.1.0",
+    "@vitest/coverage-v8": "5.1.0",
     "acpx": "0.21.1",
     "ajv": "8.20.0",
     "apache-arrow": "21.2.0",
@@ -2555,7 +2556,7 @@
     "typescript": "7.1.0-dev.20261028.1",
     "unrun": "0.3.1",
     "vite": "8.3.5",
-    "vitest": "5.0.5"
+    "vitest": "5.1.0"
   },
   "optionalDependencies": {
     "sqlite-vec": "0.1.9"

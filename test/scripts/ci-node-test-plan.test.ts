@@ -3823,7 +3823,7 @@ describe("scripts/lib/ci-node-test-plan.mts", () => {
     "config/ci-budget.md",
     configPath("tooling"),
     "package.json",
-    "patches/vitest@5.0.5.patch",
+    "patches/vitest@5.1.0.patch",
     ".github/workflows/ci.yml",
     "apps/ios/fastlane/Fastfile",
     "extensions/matrix/scripts/build.mjs",

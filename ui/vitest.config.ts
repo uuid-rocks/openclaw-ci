@@ -21,7 +21,11 @@ import {
   loadVitestPerformanceConfig,
 } from "../test/vitest/vitest.performance-config.ts";
 import { createRedactingReporterPlugin } from "../test/vitest/vitest.reporters.ts";
-import { nonIsolatedRunnerPath, sharedVitestConfig } from "../test/vitest/vitest.shared.config.ts";
+import {
+  bsvVitestPlugins,
+  nonIsolatedRunnerPath,
+  sharedVitestConfig,
+} from "../test/vitest/vitest.shared.config.ts";
 import { uiIsolatedTestFiles } from "../test/vitest/vitest.ui-isolated-paths.mjs";
 import {
   resolveUiTypeScriptPath,
@@ -202,6 +206,7 @@ export function createUiBrowserVitestConfig(
       controlUiLocaleModulesPlugin(),
       createVitestProjectCachePlugin(),
       createRedactingReporterPlugin(),
+      ...bsvVitestPlugins,
     ],
     optimizeDeps: {
       include: [

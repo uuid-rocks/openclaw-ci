@@ -647,7 +647,7 @@ const PRECISE_SOURCE_TEST_TARGETS = new Map<string, string[]>([
     ["src/agents/bash-tools.process.liveness.test.ts"],
   ],
   [
-    "patches/vitest@5.0.5.patch",
+    "patches/vitest@5.1.0.patch",
     [
       "test/scripts/run-vitest-profile.test.ts",
       "test/scripts/run-vitest-state-cleanup.test.ts",

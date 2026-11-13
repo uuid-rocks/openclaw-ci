@@ -48,7 +48,7 @@ it("allows approved pnpm patches together", () => {
     ["baileys@7.0.0-rc12", "patches/baileys@7.0.0-rc12.patch"],
     ["baileys@7.0.0-rc13", "patches/baileys@7.0.0-rc13.patch"],
     ["baileys@7.0.0-rc14", "patches/baileys@7.0.0-rc14.patch"],
-    ["vitest@5.0.5", "patches/vitest@5.0.5.patch"],
+    ["vitest@5.1.0", "patches/vitest@5.1.0.patch"],
     ["matrix-js-sdk@44.0.0", "patches/matrix-js-sdk@44.0.0.patch"],
     ["@solidjs/web@2.0.0-rc.18", "patches/@solidjs__web@2.0.0-rc.18.patch"],
     ["@solidjs/signals@2.0.0-rc.18", "patches/@solidjs__signals@2.0.0-rc.18.patch"],

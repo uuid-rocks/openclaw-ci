@@ -18,6 +18,16 @@ export {
   resolveSharedVitestWorkerConfig,
 } from "./vitest.node-base.ts";
 export type { LocalVitestScheduling } from "./vitest.node-base.ts";
+// bsv measurement: BSV_MODE=select|shadow|runall loads @useblacksmith/vitest; unset or off does not import it.
+const bsvMode = process.env.BSV_MODE ?? "off";
+export const bsvVitestPlugins =
+  bsvMode === "select" || bsvMode === "shadow" || bsvMode === "runall"
+    ? [
+        (await import("@useblacksmith/vitest")).default(
+          bsvMode === "shadow" ? { shadow: true } : bsvMode === "runall" ? { runAllTests: true } : {},
+        ),
+      ]
+    : [];
 export const nonIsolatedRunnerPath = path.join(repoRoot, "test", "non-isolated-runner.ts");
 const vitestConfigFiles = fs
   .readdirSync(path.join(repoRoot, "test", "vitest"), { withFileTypes: true })
@@ -38,6 +48,7 @@ export const sharedVitestConfig = {
     createStateSchemaInlinePlugin(repoRoot),
     createVitestDeclaredInputsPlugin(repoRoot),
     compiledSubprocessesPlugin(),
+    ...bsvVitestPlugins,
   ],
   resolve: createVitestResolveConfig(repoRoot),
   test: {

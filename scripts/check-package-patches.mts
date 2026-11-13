@@ -24,7 +24,7 @@ const ALLOWED_PATCHED_DEPENDENCIES = new Map([
   ["@novnc/novnc@1.7.0", "patches/@novnc__novnc@1.7.0.patch"],
   ["@solidjs/web@2.0.0-rc.18", "patches/@solidjs__web@2.0.0-rc.18.patch"],
   ["@solidjs/signals@2.0.0-rc.18", "patches/@solidjs__signals@2.0.0-rc.18.patch"],
-  ["vitest@5.0.5", "patches/vitest@5.0.5.patch"],
+  ["vitest@5.1.0", "patches/vitest@5.1.0.patch"],
   ["baileys@7.0.0-rc12", "patches/baileys@7.0.0-rc12.patch"],
   ["baileys@7.0.0-rc13", "patches/baileys@7.0.0-rc13.patch"],
   ["baileys@7.0.0-rc14", "patches/baileys@7.0.0-rc14.patch"],
