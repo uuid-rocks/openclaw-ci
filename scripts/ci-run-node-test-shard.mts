@@ -1030,6 +1030,8 @@ export async function runShardPlans(plans: ShardPlan[], options: RunShardOptions
                 : "";
           unverifiedChild ||= !context;
           completion.invocations++;
+          // bsv measurement: names the group so @useblacksmith/vitest keys its snapshot per include subset.
+          childEnv.BSV_GROUP = `${timingPrefix}${entry.name}`;
           const code = await runner(
             args,
             childEnv,

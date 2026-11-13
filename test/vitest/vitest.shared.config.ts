@@ -20,9 +20,24 @@ export {
 export type { LocalVitestScheduling } from "./vitest.node-base.ts";
 // bsv measurement: BSV_MODE=select|shadow|runall loads @useblacksmith/vitest; unset or off does not import it.
 const bsvMode = process.env.BSV_MODE ?? "off";
+// The plugin keys its snapshot on root + project names, so groups that run one config with
+// different include subsets would share (and overwrite) one key; BSV_GROUP names the subset.
+const bsvGroupNamePlugin = {
+  name: "bsv-group-name",
+  config(config: { test?: { name?: string | { label: string } } }) {
+    const group = process.env.BSV_GROUP;
+    if (!group) {
+      return undefined;
+    }
+    const name = config.test?.name;
+    const label = `${typeof name === "string" ? name : (name?.label ?? "")}@${group}`;
+    return { test: { name: typeof name === "object" ? { ...name, label } : label } };
+  },
+};
 export const bsvVitestPlugins =
   bsvMode === "select" || bsvMode === "shadow" || bsvMode === "runall"
     ? [
+        bsvGroupNamePlugin,
         (await import("@useblacksmith/vitest")).default(
           bsvMode === "shadow" ? { shadow: true } : bsvMode === "runall" ? { runAllTests: true } : {},
         ),

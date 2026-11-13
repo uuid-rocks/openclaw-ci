@@ -46,9 +46,28 @@ function isNodeStartupHook(arg) {
   );
 }
 
+// bsv measurement: @useblacksmith/vitest preloads its child-process read recorder into every child.
+function withoutBlacksmithRecorder(args) {
+  const kept = [];
+  for (let index = 0; index < args.length; index += 1) {
+    if (
+      args[index] === "--import" &&
+      /\/@useblacksmith\/vitest\/dist\/record-child\.js$/u.test(args[index + 1] ?? "")
+    ) {
+      index += 1;
+      continue;
+    }
+    kept.push(args[index]);
+  }
+  return kept;
+}
+
 export function hasNodeStartupHooks(execArgv, nodeOptions) {
   const envArgs = parseNodeOptionsEnvVar(nodeOptions);
-  return envArgs === null || [...execArgv, ...envArgs].some(isNodeStartupHook);
+  return (
+    envArgs === null ||
+    [...execArgv, ...withoutBlacksmithRecorder(envArgs)].some(isNodeStartupHook)
+  );
 }
 
 /** Dedicated process owners must not inherit the caller's instrumentation loaders. */
